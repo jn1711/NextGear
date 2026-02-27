@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Коммерческие - NextGear</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #f8f9fa;
+    color: #111827;
+}
+
+/* HEADER */
+header {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: #ffffff;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 20px;
+    color: #2563eb;
+    white-space: nowrap;
+}
+
+.search-bar {
+    flex: 1;
+    max-width: 500px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.search-bar input:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.header-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #d1d5db;
+    color: #111827;
+}
+
+.btn-outline:hover {
+    background: #f3f4f6;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #1e40af;
+}
+
+/* CATEGORY TABS */
+.category-tabs {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.category-container {
+    width: 100%;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.category-card {
+    background: #f9fafb;
+    padding: 24px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 1px solid #e5e7eb;
+}
+
+.category-card:hover {
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+}
+
+.category-card.active {
+    background: #dbeafe;
+    border-color: #2563eb;
+}
+
+.category-icon {
+    font-size: 32px;
+    color: #2563eb;
+    margin-bottom: 12px;
+}
+
+.category-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* MAIN CONTENT */
+.main-container {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 40px;
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.page-header {
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* VEHICLES LIST */
+.vehicles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.vehicle-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 320px 1fr 220px;
+    gap: 24px;
+    align-items: stretch;
+    border: 1px solid #e5e7eb;
+    transition: 0.3s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.vehicle-card:hover {
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+    border-color: #2563eb;
+}
+
+.vehicle-image {
+    width: 320px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.vehicle-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.vehicle-header {
+    display: flex;
+    align-items: start;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.vehicle-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    flex: 1;
+}
+
+.vehicle-location {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 12px;
+}
+
+.vehicle-specs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.spec-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563eb;
+    font-size: 14px;
+}
+
+.vehicle-meta {
+    font-size: 12px;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.vehicle-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.vehicle-price {
+    text-align: right;
+}
+
+.price-main {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.price-monthly {
+    background: #f59e0b;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.vehicle-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.quote-btn {
+    background: #2563eb;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.quote-btn:hover {
+    background: #1e40af;
+}
+
+.favorite-icon {
+    font-size: 20px;
+    color: #d1d5db;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.favorite-icon:hover {
+    color: #ef4444;
+}
+
+/* PAGINATION */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.pagination button,
+.pagination span {
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.pagination button:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.pagination .active {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+/* FOOTER */
+footer {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: #ffffff;
+    padding: 40px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.footer-column h4 {
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.footer-column p,
+.footer-column a {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 8px;
+    line-height: 1.6;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.footer-column a:hover {
+    color: #2563eb;
+}
+
+@media (max-width: 1024px) {
+    .vehicle-card {
+        grid-template-columns: 1fr;
+    }
+
+    .vehicle-image {
+        width: 100%;
+    }
+
+    .vehicle-side {
+        align-items: flex-start;
+    }
+
+    .vehicle-price {
+        text-align: left;
+    }
+
+    .category-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo" onclick="navigateTo('index.html')">
+            <i class="fas fa-car"></i>
+            NextGear
+        </div>
+        <div class="search-section search-bar">
+            <i class="search-icon fas fa-search"></i>
+            <input type="text" placeholder="Search for make, model or year…">
+        </div>
+        <div class="nav-menu">
+            <button class="nav-link" onclick="navigateTo('index.html')">Marketplace</button>
+            <button class="nav-link" onclick="navigateTo('filter.html')">Filter</button>
+            <button class="nav-link" onclick="navigateTo('kredit.html')">Credit</button>
+            <button class="nav-link" onclick="navigateTo('idk.html')">Sell</button>
+            <button class="nav-link" onclick="navigateTo('dashboard.html')">Dashboard</button>
+        </div>
+        <div class="header-buttons">
+            <button class="btn-outline" onclick="navigateTo('vxod.html')">Sign In</button>
+            <button class="btn-primary" onclick="navigateTo('regis.html')">Register</button>
+        </div>
+    </div>
+</header>
+
+<div class="main-container">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h1>Коммерческий транспорт</h1>
+            <p>Найдите идеальное решение для вашего бизнеса</p>
+        </div>
+
+        <div class="vehicles-list">
+            <!-- VEHICLE 1 -->
+            <div class="vehicle-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2019_BMW_X7_%28G07%29_M50d_wagon_%282018-11-28%29_01.jpg/1280px-2019_BMW_X7_%28G07%29_M50d_wagon_%282018-11-28%29_01.jpg" alt="Mercedes Actros" class="vehicle-image">
+
+                <div class="vehicle-info">
+                    <div>
+                        <div class="vehicle-header">
+                            <h3>Mercedes-Benz Actros 1845 LS</h3>
+                        </div>
+                        <div class="vehicle-location">
+                            <i class="fas fa-map-marker-alt"></i> Алматы, Казахстан
+                        </div>
+
+                        <div class="vehicle-specs">
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-weight"></i></div>
+                                <span>16 000 kg грузоподъемность</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <span>42 000 km пробег</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-bolt"></i></div>
+                                <span>1240 HP мощность</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-cog"></i></div>
+                                <span>4x2 двигатель</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-meta">
+                        <span>12 февраля 2025</span>
+                        <span>1,245 просмотров</span>
+                    </div>
+                </div>
+
+                <div class="vehicle-side">
+                    <div class="vehicle-price">
+                        <div class="price-main">55,000,000 ₸</div>
+                        <div class="price-monthly">520,416 ₸ / месяц</div>
+                    </div>
+
+                    <div class="vehicle-actions">
+                        <button class="quote-btn">
+                            Получить квоту <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <i class="fas fa-heart favorite-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VEHICLE 2 -->
+            <div class="vehicle-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/2018_Ford_Transit_Custom_300_Eco_Blue_2.2_Front.jpg/1280px-2018_Ford_Transit_Custom_300_Eco_Blue_2.2_Front.jpg" alt="Ford Transit" class="vehicle-image">
+
+                <div class="vehicle-info">
+                    <div>
+                        <div class="vehicle-header">
+                            <h3>Ford Transit High Roof L4H3</h3>
+                        </div>
+                        <div class="vehicle-location">
+                            <i class="fas fa-map-marker-alt"></i> Nur-Sultan, Казахстан
+                        </div>
+
+                        <div class="vehicle-specs">
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-cube"></i></div>
+                                <span>15 м³ объем кузова</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <span>5 200 km пробег</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-sliders-h"></i></div>
+                                <span>Automatic коробка</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-droplet"></i></div>
+                                <span>Diesel топливо</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-meta">
+                        <span>10 февраля 2025</span>
+                        <span>856 просмотров</span>
+                    </div>
+                </div>
+
+                <div class="vehicle-side">
+                    <div class="vehicle-price">
+                        <div class="price-main">22,650,000 ₸</div>
+                        <div class="price-monthly">350,149 ₸ / месяц</div>
+                    </div>
+
+                    <div class="vehicle-actions">
+                        <button class="quote-btn">
+                            Получить квоту <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <i class="fas fa-heart favorite-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VEHICLE 3 -->
+            <div class="vehicle-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/MAN_bus_CapaCity_Aachen_2010.jpg/1280px-MAN_bus_CapaCity_Aachen_2010.jpg" alt="MAN Lion's Coach" class="vehicle-image">
+
+                <div class="vehicle-info">
+                    <div>
+                        <div class="vehicle-header">
+                            <h3>MAN Lion's Coach R07</h3>
+                        </div>
+                        <div class="vehicle-location">
+                            <i class="fas fa-map-marker-alt"></i> Aktau, Казахстан
+                        </div>
+
+                        <div class="vehicle-specs">
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-users"></i></div>
+                                <span>49 + 1 + 1 мест</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <span>125 000 km пробег</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-leaf"></i></div>
+                                <span>Euro 6 класс</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-snowflake"></i></div>
+                                <span>Dual Zone A/C</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-meta">
+                        <span>8 февраля 2025</span>
+                        <span>2,127 просмотров</span>
+                    </div>
+                </div>
+
+                <div class="vehicle-side">
+                    <div class="vehicle-price">
+                        <div class="price-main">91,000,000 ₸</div>
+                        <div class="price-monthly">1,204,197 ₸ / месяц</div>
+                    </div>
+
+                    <div class="vehicle-actions">
+                        <button class="quote-btn">
+                            Получить квоту <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <i class="fas fa-heart favorite-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VEHICLE 4 -->
+            <div class="vehicle-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Volvo_FH16_2012.jpg/1280px-Volvo_FH16_2012.jpg" alt="Volvo FH16" class="vehicle-image">
+
+                <div class="vehicle-info">
+                    <div>
+                        <div class="vehicle-header">
+                            <h3>Volvo FH16 750 Globetrotter</h3>
+                        </div>
+                        <div class="vehicle-location">
+                            <i class="fas fa-map-marker-alt"></i> Karaganda, Казахстан
+                        </div>
+
+                        <div class="vehicle-specs">
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-weight"></i></div>
+                                <span>25 000 kg грузоподъемность</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <span>85 000 km пробег</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-bolt"></i></div>
+                                <span>750 HP мощность</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-cog"></i></div>
+                                <span>6x4 конфигурация</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-meta">
+                        <span>6 февраля 2025</span>
+                        <span>654 просмотра</span>
+                    </div>
+                </div>
+
+                <div class="vehicle-side">
+                    <div class="vehicle-price">
+                        <div class="price-main">78,500,000 ₸</div>
+                        <div class="price-monthly">892,455 ₸ / месяц</div>
+                    </div>
+
+                    <div class="vehicle-actions">
+                        <button class="quote-btn">
+                            Получить квоту <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <i class="fas fa-heart favorite-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VEHICLE 5 -->
+            <div class="vehicle-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Scania_K380_tipper_pk015138.jpg/1280px-Scania_K380_tipper_pk015138.jpg" alt="Scania R490" class="vehicle-image">
+
+                <div class="vehicle-info">
+                    <div>
+                        <div class="vehicle-header">
+                            <h3>Scania R490 LA 4x2 MNA</h3>
+                        </div>
+                        <div class="vehicle-location">
+                            <i class="fas fa-map-marker-alt"></i> Shymkent, Казахстан
+                        </div>
+
+                        <div class="vehicle-specs">
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-weight"></i></div>
+                                <span>20 000 kg грузоподъемность</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <span>156 000 km пробег</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-bolt"></i></div>
+                                <span>490 HP мощность</span>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon"><i class="fas fa-sliders-h"></i></div>
+                                <span>Automated Manual</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-meta">
+                        <span>4 февраля 2025</span>
+                        <span>432 просмотра</span>
+                    </div>
+                </div>
+
+                <div class="vehicle-side">
+                    <div class="vehicle-price">
+                        <div class="price-main">38,900,000 ₸</div>
+                        <div class="price-monthly">521,873 ₸ / месяц</div>
+                    </div>
+
+                    <div class="vehicle-actions">
+                        <button class="quote-btn">
+                            Получить квоту <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <i class="fas fa-heart favorite-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination">
+            <button>←</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <span>...</span>
+            <button>8</button>
+            <button>→</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h4>NextGear</h4>
+            <p>Marketplace for commercial vehicles in Kazakhstan.</p>
+            <p>© 2024 NextGear. All rights reserved.</p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Marketplace</h4>
+            <p><a href="#">Buy a Car</a></p>
+            <p><a href="#">Sell a Car</a></p>
+            <p><a href="#">Commercial Vehicles</a></p>
+            <p><a href="#">Financing</a></p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Support</h4>
+            <p><a href="#">Help Center</a></p>
+            <p><a href="#">Terms of Service</a></p>
+            <p><a href="#">Privacy Policy</a></p>
+            <p><a href="#">Contact Us</a></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Favorite toggle
+document.querySelectorAll('.favorite-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
+        this.style.color = this.style.color === 'rgb(239, 68, 68)' ? '#d1d5db' : '#ef4444';
+    });
+});
+
+// Quote button
+document.querySelectorAll('.quote-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        alert('Спасибо! Мы свяжемся с вами в ближайшее время для предоставления коммерческого предложения.');
+    });
+});
+</script>
+
+<script>
+// ===== UNIFIED NAVIGATION SCRIPT =====
+function getCurrentPage() {
+    return window.location.pathname.split('/').pop() || 'index.html';
+}
+function navigateTo(page) {
+    if (page) {
+        document.documentElement.style.opacity = '0.8';
+        setTimeout(() => {
+            window.location.href = page;
+        }, 150);
+    }
+}
+function setActiveNavLink() {
+    const currentPage = getCurrentPage();
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('onclick');
+        if (href && href.includes(currentPage)) {
+            link.classList.add('active');
+        }
+    });
+}
+document.addEventListener('DOMContentLoaded', function() {
+    setActiveNavLink();
+    document.documentElement.style.opacity = '1';
+    document.documentElement.style.transition = 'opacity 0.3s ease';
+});
+window.addEventListener('pageshow', function() {
+    setActiveNavLink();
+    document.documentElement.style.opacity = '1';
+});
+
+// ===== AUTHENTICATION MANAGEMENT =====
+function checkAuthStatus() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return currentUser;
+}
+
+function logout() {
+    if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('rememberMe');
+        alert('You have been logged out.');
+        window.location.href = 'index.html';
+    }
+}
+
+function updateAuthUI() {
+    const currentUser = checkAuthStatus();
+    const headerButtons = document.querySelector('.header-buttons');
+    
+    if (currentUser && headerButtons) {
+        headerButtons.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 16px; margin-right: -18px;">
+                <span style="color: #4b5563; font-weight: 500;">Hi, ${currentUser.firstName}!</span>
+                <button class="btn-outline" onclick="logout()" style="margin: 0;">Logout</button>
+            </div>
+        `;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateAuthUI();
+});
+</script>
+
+</body>
+</html>

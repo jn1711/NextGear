@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextGear - Marketplace</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+.wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+/* ===== UNIFIED HEADER ===== */
+header {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: #ffffff;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    margin-bottom: 24px;
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 24px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+}
+
+.logo i {
+    font-size: 28px;
+}
+
+/* SEARCH BAR */
+.search-section {
+    flex: 1;
+    max-width: 400px;
+    position: relative;
+}
+
+.search {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    transition: 0.3s ease;
+}
+
+.search::placeholder {
+    color: #9ca3af;
+}
+
+.search:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+/* NAVIGATION MENU */
+.nav-menu {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-right: auto;
+}
+
+.nav-link {
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    color: #4b5563;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    background: #f3f4f6;
+    color: #1a202c;
+}
+
+.nav-link.active {
+    color: #2563eb;
+    background: #eff6ff;
+}
+
+/* HEADER BUTTONS */
+.header-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.header-buttons button {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #d1d5db;
+    color: #4b5563;
+}
+
+.btn-outline:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+    color: #1a202c;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+    transform: translateY(-1px);
+}
+
+/* FILTER TABS */
+
+.tabs {
+    display: flex;
+    gap: 20px;
+    padding: 20px 40px;
+}
+
+.tab {
+    background: #e5edff;
+    padding: 20px;
+    border-radius: 12px;
+    flex: 1;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.tab.inactive {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+}
+
+/* CARDS */
+
+.container {
+    padding: 20px 40px 60px 40px;
+}
+
+.car-card {
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #e5e7eb;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.car-card:hover {
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.car-left {
+    display: flex;
+    gap: 20px;
+}
+
+.car-left img {
+    width: 200px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.car-info h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.car-info p {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.price {
+    text-align: right;
+}
+
+.price h2 {
+    font-size: 20px;
+}
+
+.price span {
+    display: inline-block;
+    margin-top: 5px;
+    background: #f59e0b;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+/* FOOTER */
+
+footer {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: #ffffff;
+    padding: 40px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-column h4 {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.footer-column p {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 6px;
+}
+
+.filters {
+    padding: 0 40px 20px 40px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.filter {
+    margin: 0 auto;
+    padding: 10px 18px;
+    border-radius: 30px;
+    border: 1px solid #d1d5db;
+    background: #f3f4f6;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.filter:hover {
+    background: #e5e7eb;
+}
+
+.filter.active {
+    background: #1e3a8a;
+    color: white;
+    border: none;
+}
+
+.tab {
+    transition: 0.2s ease;
+}
+
+.tab:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+}
+
+.filter {
+    transition: 0.2s ease;
+}
+
+.filter:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.car-card {
+    transition: 0.25s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    border-color: #2563eb;
+}
+
+.btn-primary {
+    transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+    background: #1e40af;
+    transform: translateY(-2px);
+}
+
+.car-left img {
+    transition: 0.3s ease;
+}
+
+.car-card:hover img {
+    transform: scale(1.05);
+}
+
+
+</style>
+
+</head>
+<div class="wrap">
+    <body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo" onclick="navigateTo('index.html')">
+                <i class="fas fa-car"></i>
+                NextGear
+            </div>
+            <div class="search-section">
+                <i class="search-icon fas fa-search"></i>
+                <input class="search" placeholder="Search for make, model or year...">
+            </div>
+            <div class="nav-menu">
+                <button class="nav-link" onclick="navigateTo('index.html')">Marketplace</button>
+                <button class="nav-link" onclick="navigateTo('filter.html')">Filter</button>
+                <button class="nav-link" onclick="navigateTo('kredit.html')">Credit</button>
+                <button class="nav-link" onclick="navigateTo('idk.html')">Sell</button>
+                <button class="nav-link" onclick="navigateTo('dashboard.html')">Dashboard</button>
+            </div>
+            <div class="header-buttons">
+                <button class="btn-outline" onclick="navigateTo('vxod.html')">Sign In</button>
+                <button class="btn-primary" onclick="navigateTo('regis.html')">Register</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="filters">
+        <button class="filter active">Доверенные Диллеры</button>
+        <button class="filter">Сначала дорогие</button>
+        <button class="filter">Популярное</button>
+        <button class="filter">Недавно Добавленные</button>
+        <button class="filter">Под 5 млн тг</button>
+        <button class="filter">АКПП/МКПП</button>
+    </div>
+
+    <div class="container">
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>NextGear</h4>
+                <p>Marketplace for buying and selling cars.</p>
+                <p>© 2024 NextGear</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Marketplace</h4>
+                <p>Buy a Car</p>
+                <p>Sell a Car</p>
+                <p>Car Finance</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Support</h4>
+                <p>Help Center</p>
+                <p>Terms of Service</p>
+                <p>Privacy Policy</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+// ===== UNIFIED NAVIGATION SCRIPT =====
+
+// Navigate to product page
+function goToProduct(carId, element) {
+    // Find the car in carsData and save it to localStorage
+    const car = carsData.find(c => c.id == carId);
+    if (car) {
+        localStorage.setItem('selectedCar', JSON.stringify(car));
+    }
+    
+    // Navigate to product page
+    const imgElement = element.querySelector('img');
+    const imageUrl = imgElement ? encodeURIComponent(imgElement.src) : '';
+    const url = 'product.html?id=' + carId + (imageUrl ? '&image=' + imageUrl : '');
+    window.location.href = url;
+}
+
+// ===== CARS DATABASE =====
+const carsData = [
+    { id: 1, title: "Toyota Land Cruiser 300", price: 68000000, transmission: "Automatic", image: "https://www.ixbt.com/img/n1/news/2022/4/2/Toyota-Land-Cruiser-Widebody-By-KHANN-International-New-1_large.jpg", specs: "3.5L Twin Turbo • 415 HP • AWD", location: "Almaty", date: "12 February", views: 653 },
+    { id: 2, title: "Kia K5 2022", price: 12700000, transmission: "Automatic", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0QCXouDs8WeiVJtEqQGJTVrP_I5nJDZ5b3A&s", specs: "2.5L • 194 HP • FWD", location: "Almaty", date: "Today", views: 126 },
+    { id: 3, title: "Porsche 911 Carrera S", price: 45500000, transmission: "Automatic", image: "https://www.cnet.com/a/img/resize/5d412b9c47c52d6047d4cf0aa138cb666063d0a3/hub/2020/07/01/f9fd026c-cf70-4170-a1c6-53521c35a21a/2020-porsche-911-carrera-s-manual-001.jpg?auto=webp&fit=crop&height=675&width=1200", specs: "450 HP • RWD • PDK", location: "Almaty", date: "Yesterday", views: 2480 },
+    { id: 4, title: "BMW X7 2023", price: 55300000, transmission: "Automatic", image: "https://hips.hearstapps.com/hmg-prod/images/2023-bmw-x7-xdrive-40i134-641c5b3ca7165.jpg?crop=0.596xw:0.447xh;0.290xw,0.377xh&resize=1200:*", specs: "4.4L Twin Turbo • 523 HP • AWD", location: "Nur-Sultan", date: "10 February", views: 1245 },
+    { id: 5, title: "Mercedes E-Class 2021", price: 28900000, transmission: "Automatic", image: "https://iat.ru/uploads/origin/models/685590/1.webp", specs: "2.0L Turbo • 255 HP • RWD", location: "Aktau", date: "8 February", views: 856 },
+    { id: 6, title: "Audi A6 2022", price: 24500000, transmission: "Automatic", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWTUvy2ElRWKx8PQYt6JQoHJi77SBOiHQH9w&s", specs: "2.0L Turbo • 204 HP • AWD", location: "Karaganda", date: "6 February", views: 623 },
+    { id: 7, title: "Tesla Model 3 2023", price: 18500000, transmission: "Automatic", image: "https://img.autobytel.com/chrome/colormatched_01/white/1280/cc_2023tsc03_01_1280/cc_2023tsc030003_01_1280_msmet.jpg", specs: "306 HP • Electric • FWD", location: "Almaty", date: "5 February", views: 3127 },
+    { id: 8, title: "Lexus RX 350 2022", price: 32100000, transmission: "Automatic", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFQhS_5bPGhmpZoWZoX0QdVJKGfvRO1PuY8w&s", specs: "3.5L • 295 HP • AWD", location: "Nur-Sultan", date: "4 February", views: 892 }
+];
+
+let currentFilter = 'trusted';
+let filteredCars = [...carsData];
+
+// Load user-created cars from localStorage and add to carsData
+function loadMarketplaceCars() {
+    const marketplaceCars = JSON.parse(localStorage.getItem('marketplaceCars') || '[]');
+    
+    if (marketplaceCars && marketplaceCars.length > 0) {
+        marketplaceCars.forEach(car => {
+            // Avoid duplicates
+            if (!carsData.some(c => c.id === car.id)) {
+                carsData.push({
+                    id: car.id,
+                    title: car.title,
+                    price: car.price,
+                    transmission: car.transmission,
+                    image: car.photos && car.photos.length > 0 ? car.photos[0] : 'https://via.placeholder.com/400x300?text=No+Photo',
+                    specs: `${car.make} • ${car.year} • ${car.mileage} км`,
+                    location: car.location,
+                    date: 'Recently added',
+                    views: 0
+                });
+            }
+        });
+    }
+    
+    filteredCars = [...carsData];
+}
+
+// Filter cars by selected criteria
+function filterCars(filterType) {
+    currentFilter = filterType;
+    
+    switch(filterType) {
+        case 'trusted':
+            filteredCars = [...carsData];
+            break;
+        case 'expensive':
+            filteredCars = [...carsData].sort((a, b) => b.price - a.price);
+            break;
+        case 'popular':
+            filteredCars = [...carsData].sort((a, b) => b.views - a.views);
+            break;
+        case 'recent':
+            // For demo, just reverse the array as "recent"
+            filteredCars = [...carsData].reverse();
+            break;
+        case 'budget':
+            filteredCars = carsData.filter(car => car.price <= 5000000);
+            break;
+        case 'transmission':
+            filteredCars = carsData.filter(car => car.transmission === 'Automatic');
+            break;
+        default:
+            filteredCars = [...carsData];
+    }
+    
+    renderCars();
+    updateFilterButtons(filterType);
+}
+
+// Render cars to the container
+function renderCars() {
+    const container = document.querySelector('.container');
+    if (!container) return;
+    
+    container.innerHTML = filteredCars.map(car => `
+        <div class="car-card" onclick="goToProduct(${car.id}, this)">
+            <div class="car-left">
+                <img src="${car.image}" alt="">
+                <div class="car-info">
+                    <h3>${car.title}</h3>
+                    <p>${car.specs}</p>
+                    <p>${car.location} • ${car.date} • ${car.views} views</p>
+                </div>
+            </div>
+            <div class="price">
+                <h2>${(car.price / 1000000).toFixed(1).replace(/\.0$/, '')},000,000 ₸</h2>
+                <span>${Math.round(car.price / 48).toLocaleString('ru-RU')} ₸ / месяц</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Update filter button styles
+function updateFilterButtons(activeFilter) {
+    const filters = document.querySelectorAll('.filter');
+    filters.forEach(btn => btn.classList.remove('active'));
+    
+    const filterMap = {
+        'trusted': 0,
+        'expensive': 1,
+        'popular': 2,
+        'recent': 3,
+        'budget': 4,
+        'transmission': 5
+    };
+    
+    if (filterMap[activeFilter] !== undefined) {
+        filters[filterMap[activeFilter]].classList.add('active');
+    }
+}
+
+// Get current page
+function getCurrentPage() {
+    return window.location.pathname.split('/').pop() || 'index.html';
+}
+
+// Page metadata for navigation
+const PAGES = {
+    'index.html': { name: 'Marketplace', icon: '🏠' },
+    'filter.html': { name: 'Filter', icon: '🔍' },
+    'kredit.html': { name: 'Credit', icon: '💳' },
+    'kemerical.html': { name: 'Commercial', icon: '🚚' },
+    'vxod.html': { name: 'Login', icon: '🔐' },
+    'regis.html': { name: 'Register', icon: '📝' },
+    'idk.html': { name: 'Sell', icon: '📝' },
+    'dashboard.html': { name: 'Dashboard', icon: '📊' }
+};
+
+// Navigate with smooth transition
+function navigateTo(page) {
+    if (page) {
+        // Add fade out effect
+        document.documentElement.style.opacity = '0.8';
+        setTimeout(() => {
+            window.location.href = page;
+        }, 150);
+    }
+}
+
+// Mark active nav link
+function setActiveNavLink() {
+    const currentPage = getCurrentPage();
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('onclick');
+        if (href && href.includes(currentPage)) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    setActiveNavLink();
+
+    // Smooth fade-in effect
+    document.documentElement.style.opacity = '1';
+    
+    // Load user-created cars from localStorage
+    loadMarketplaceCars();
+    
+    // Initialize filters
+    const filterButtons = document.querySelectorAll('.filter');
+    filterButtons.forEach((btn, index) => {
+        btn.addEventListener('click', function() {
+            const filterMap = ['trusted', 'expensive', 'popular', 'recent', 'budget', 'transmission'];
+            filterCars(filterMap[index]);
+        });
+    });
+    
+    // Initial render
+    renderCars();
+
+    // Search functionality
+    const searchInput = document.querySelector('.search');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                console.log('Search for:', this.value);
+            }
+        });
+    }
+
+    // Add page transition animation
+    document.documentElement.style.transition = 'opacity 0.3s ease';
+});
+
+// Handle browser back/forward
+window.addEventListener('pageshow', function() {
+    setActiveNavLink();
+    document.documentElement.style.opacity = '1';
+});
+
+// ===== AUTHENTICATION MANAGEMENT =====
+function checkAuthStatus() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return currentUser;
+}
+
+function logout() {
+    if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('rememberMe');
+        alert('You have been logged out.');
+        window.location.href = 'index.html';
+    }
+}
+
+function updateAuthUI() {
+    const currentUser = checkAuthStatus();
+    const headerButtons = document.querySelector('.header-buttons');
+    
+    if (currentUser && headerButtons) {
+        // Replace buttons with logout button
+        headerButtons.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 16px; margin-right: -18px;">
+                <span style="color: #4b5563; font-weight: 500;">Hi, ${currentUser.firstName}!</span>
+                <button class="btn-outline" onclick="logout()" style="margin: 0;">Logout</button>
+            </div>
+        `;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateAuthUI();
+});
+</script>
+
+</body>
+</html>

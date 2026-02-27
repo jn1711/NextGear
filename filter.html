@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextGear - Car Marketplace</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #f8f9fa;
+    color: #111827;
+}
+
+/* ===== UNIFIED HEADER ===== */
+header {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: #ffffff;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 24px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+}
+
+.logo i {
+    font-size: 28px;
+}
+
+/* SEARCH BAR */
+.search-section {
+    flex: 1;
+    max-width: 450px;
+    position: relative;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    transition: 0.3s ease;
+}
+
+.search-bar input::placeholder {
+    color: #9ca3af;
+}
+
+.search-bar input:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+/* NAVIGATION MENU */
+.nav-menu {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-right: auto;
+}
+
+.nav-link {
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    color: #4b5563;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    background: #f3f4f6;
+    color: #1a202c;
+}
+
+.nav-link.active {
+    color: #2563eb;
+    background: #eff6ff;
+}
+
+/* HEADER BUTTONS */
+.header-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.header-buttons button {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #d1d5db;
+    color: #4b5563;
+}
+
+.btn-outline:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+    color: #1a202c;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+    transform: translateY(-1px);
+}
+
+/* CATEGORY TABS */
+.category-tabs {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.category-container {
+    width: 100%;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.category-card {
+    background: #f9fafb;
+    padding: 24px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 1px solid #e5e7eb;
+}
+
+.category-card:hover {
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+}
+
+.category-icon {
+    font-size: 32px;
+    color: #2563eb;
+    margin-bottom: 12px;
+}
+
+.category-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* MAIN CONTENT */
+.main-container {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 40px;
+    min-height: calc(100vh - 400px);
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+}
+
+.page-header {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.sort-dropdown {
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* FILTERS SIDEBAR */
+.filters-panel {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    height: fit-content;
+}
+
+.filter-section {
+    margin-bottom: 24px;
+}
+
+.filter-section:last-child {
+    margin-bottom: 0;
+}
+
+.filter-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #111827;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f9fafb;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.body-type-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.type-btn {
+    flex: 1;
+    min-width: 60px;
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f9fafb;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.type-btn:hover {
+    border-color: #2563eb;
+}
+
+.type-btn.active {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+.price-inputs {
+    display: flex;
+    gap: 8px;
+}
+
+.price-inputs input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f9fafb;
+    font-size: 13px;
+}
+
+.warranty-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.warranty-toggle input {
+    cursor: pointer;
+}
+
+.show-results-btn {
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.show-results-btn:hover {
+    background: #1e40af;
+}
+
+/* CARS LIST */
+.cars-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.car-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 180px 1fr 180px;
+    gap: 20px;
+    align-items: center;
+    border: 1px solid #e5e7eb;
+    transition: 0.3s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.car-card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    border-color: #2563eb;
+}
+
+.car-image {
+    width: 180px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.car-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.car-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.car-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.car-badge {
+    background: #dbeafe;
+    color: #1e3a8a;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.car-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.car-meta {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.car-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.price-main {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.price-monthly {
+    background: #f59e0b;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.car-favorite {
+    font-size: 18px;
+    color: #d1d5db;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.car-favorite:hover {
+    color: #ef4444;
+}
+
+/* PAGINATION */
+.pagination {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.pagination button,
+.pagination a {
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.pagination button:hover,
+.pagination a:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.pagination .active {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+/* FOOTER */
+footer {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: #ffffff;
+    padding: 40px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.footer-column h4 {
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.footer-column p {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.footer-column a {
+    color: #6b7280;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.footer-column a:hover {
+    color: #2563eb;
+}
+
+@media (max-width: 1024px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .category-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .car-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo" onclick="navigateTo('index.html')">
+            <i class="fas fa-car"></i>
+            NextGear
+        </div>
+        <div class="search-section search-bar">
+            <i class="search-icon fas fa-search"></i>
+            <input type="text" placeholder="Search for make, model or year…">
+        </div>
+        <div class="nav-menu">
+            <button class="nav-link" onclick="navigateTo('index.html')">Marketplace</button>
+            <button class="nav-link" onclick="navigateTo('filter.html')">Filter</button>
+            <button class="nav-link" onclick="navigateTo('kredit.html')">Credit</button>
+            <button class="nav-link" onclick="navigateTo('idk.html')">Sell</button>
+            <button class="nav-link" onclick="navigateTo('dashboard.html')">Dashboard</button>
+        </div>
+        <div class="header-buttons">
+            <button class="btn-outline" onclick="navigateTo('vxod.html')">Sign In</button>
+            <button class="btn-primary" onclick="navigateTo('regis.html')">Register</button>
+        </div>
+    </div>
+</header>
+
+<div class="main-container">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h1>New Cars 2024–2025</h1>
+            <select class="sort-dropdown">
+                <option>Sort by: Newly added</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Most Popular</option>
+            </select>
+        </div>
+
+        <aside class="filters-panel">
+            <div class="filter-section">
+                <div class="filter-title">Brand</div>
+                <select class="filter-select">
+                    <option>All Brands</option>
+                    <option>Toyota</option>
+                    <option>BMW</option>
+                    <option>Mercedes</option>
+                    <option>Audi</option>
+                </select>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-title">Body Type</div>
+                <div class="body-type-buttons">
+                    <button class="type-btn active">Sedan</button>
+                    <button class="type-btn">SUV</button>
+                    <button class="type-btn">Coupe</button>
+                    <button class="type-btn">Hatch</button>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-title">Price Range</div>
+                <div class="price-inputs">
+                    <input type="text" placeholder="From">
+                    <input type="text" placeholder="To">
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <label class="warranty-toggle">
+                    <input type="checkbox">
+                    <span>Official Warranty Only</span>
+                </label>
+            </div>
+
+            <button class="show-results-btn">Show Results</button>
+        </aside>
+
+        <main class="cars-list">
+            <div class="car-card" data-brand="Toyota" data-body-type="SUV" data-price="68000000" data-warranty="yes">
+                <img src="https://www.ixbt.com/img/n1/news/2022/4/2/Toyota-Land-Cruiser-Widebody-By-KHANN-International-New-1_large.jpg" alt="" class="car-image">
+                <div class="car-info">
+                    <div class="car-header">
+                        <h3>Toyota Land Cruiser 300</h3>
+                        <span class="car-badge">Official Dealer</span>
+                    </div>
+                    <div class="car-specs">
+                        <div>3.5L Twin Turbo</div>
+                        <div>415 HP</div>
+                        <div>AWD</div>
+                        <div>Automatic</div>
+                    </div>
+                    <div class="car-meta">Almaty • 12 February • 653 views</div>
+                </div>
+                <div class="car-price">
+                    <div class="price-main">68,000,000 ₸</div>
+                    <div class="price-monthly">526,417 ₸/mo</div>
+                    <i class="fas fa-heart car-favorite"></i>
+                </div>
+            </div>
+
+            <div class="car-card" data-brand="BMW" data-body-type="Sedan" data-price="95500000" data-warranty="yes">
+                <img src="https://car-images.bauersecure.com/wp-images/200647/m5g90_61.jpg" alt="BMW M5" class="car-image">
+                <div class="car-info">
+                    <div class="car-header">
+                        <h3>BMW M5 Competition 2024</h3>
+                        <span class="car-badge">Official Dealer</span>
+                    </div>
+                    <div class="car-specs">
+                        <div>4.4L Twin Turbo</div>
+                        <div>625 HP</div>
+                        <div>RWD</div>
+                        <div>Automatic</div>
+                    </div>
+                    <div class="car-meta">Nur-Sultan • 10 February • 1,245 views</div>
+                </div>
+                <div class="car-price">
+                    <div class="price-main">95,500,000 ₸</div>
+                    <div class="price-monthly">2,150,000 ₸/mo</div>
+                    <i class="fas fa-heart car-favorite"></i>
+                </div>
+            </div>
+
+            <div class="car-card" data-brand="Porsche" data-body-type="Coupe" data-price="85500000" data-warranty="yes">
+                <img src="https://www.cnet.com/a/img/resize/5d412b9c47c52d6047d4cf0aa138cb666063d0a3/hub/2020/07/01/f9fd026c-cf70-4170-a1c6-53521c35a21a/2020-porsche-911-carrera-s-manual-001.jpg?auto=webp&fit=crop&height=675&width=1200" alt="" class="car-image">
+                <div class="car-info">
+                    <div class="car-header">
+                        <h3>Porsche 911 Carrera S</h3>
+                        <span class="car-badge">Official Dealer</span>
+                    </div>
+                    <div class="car-specs">
+                        <div>3.0L Twin Turbo</div>
+                        <div>450 HP</div>
+                        <div>RWD</div>
+                        <div>PDK</div>
+                    </div>
+                    <div class="car-meta">Almaty • Yesterday • 2,480 views</div>
+                </div>
+                <div class="car-price">
+                    <div class="price-main">85,500,000 ₸</div>
+                    <div class="price-monthly">1,765,000 ₸/mo</div>
+                    <i class="fas fa-heart car-favorite"></i>
+                </div>
+            </div>
+
+            <div class="car-card" data-brand="Toyota" data-body-type="Sedan" data-price="18500000" data-warranty="no">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfIMqm9kvRC_5VRv2x0OO1OlC3SWUwx9p_6Q&s" alt="Toyota Camry" class="car-image">
+                <div class="car-info">
+                    <div class="car-header">
+                        <h3>Toyota Camry 2022</h3>
+                    </div>
+                    <div class="car-specs">
+                        <div>2.5L V6</div>
+                        <div>203 HP</div>
+                        <div>FWD</div>
+                        <div>Automatic</div>
+                    </div>
+                    <div class="car-meta">Aktau • 8 February • 856 views</div>
+                </div>
+                <div class="car-price">
+                    <div class="price-main">18,500,000 ₸</div>
+                    <div class="price-monthly">450,000 ₸/mo</div>
+                    <i class="fas fa-heart car-favorite"></i>
+                </div>
+            </div>
+
+            <div class="car-card" data-brand="Mercedes" data-body-type="Sedan" data-price="42900000" data-warranty="yes">
+                <img src="https://iat.ru/uploads/origin/models/685590/1.webp" alt="Mercedes E-Class" class="car-image">
+                <div class="car-info">
+                    <div class="car-header">
+                        <h3>Mercedes E-Class 2021</h3>
+                        <span class="car-badge">Official Dealer</span>
+                    </div>
+                    <div class="car-specs">
+                        <div>2.0L Turbo</div>
+                        <div>255 HP</div>
+                        <div>RWD</div>
+                        <div>9G-TRONIC</div>
+                    </div>
+                    <div class="car-meta">Karaganda • 6 February • 623 views</div>
+                </div>
+                <div class="car-price">
+                    <div class="price-main">42,900,000 ₸</div>
+                    <div class="price-monthly">951,000 ₸/mo</div>
+                    <i class="fas fa-heart car-favorite"></i>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <button>←</button>
+                <button class="active">1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>...</button>
+                <button>12</button>
+                <button>→</button>
+            </div>
+        </main>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h4>NextGear</h4>
+            <p>Marketplace for buying and selling cars in Kazakhstan.</p>
+            <p>© 2024 NextGear. All rights reserved.</p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Marketplace</h4>
+            <p><a href="#">Buy a Car</a></p>
+            <p><a href="#">Sell a Car</a></p>
+            <p><a href="#">Car Finance</a></p>
+            <p><a href="#">Insurance</a></p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Support</h4>
+            <p><a href="#">Help Center</a></p>
+            <p><a href="#">Terms of Service</a></p>
+            <p><a href="#">Privacy Policy</a></p>
+            <p><a href="#">Contact</a></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// ===== UNIFIED NAVIGATION SCRIPT =====
+
+// Get current page
+function getCurrentPage() {
+    return window.location.pathname.split('/').pop() || 'index.html';
+}
+
+// Page metadata for navigation
+const PAGES = {
+    'index.html': { name: 'Marketplace', icon: '🏠' },
+    'filter.html': { name: 'Filter', icon: '🔍' },
+    'kredit.html': { name: 'Credit', icon: '💳' },
+    'kemerical.html': { name: 'Commercial', icon: '🚚' },
+    'vxod.html': { name: 'Login', icon: '🔐' },
+    'regis.html': { name: 'Register', icon: '📝' },
+    'idk.html': { name: 'Sell', icon: '📝' },
+    'dashboard.html': { name: 'Dashboard', icon: '📊' }
+};
+
+// Navigate with smooth transition
+function navigateTo(page) {
+    if (page) {
+        // Add fade out effect
+        document.documentElement.style.opacity = '0.8';
+        setTimeout(() => {
+            window.location.href = page;
+        }, 150);
+    }
+}
+
+// Mark active nav link
+function setActiveNavLink() {
+    const currentPage = getCurrentPage();
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('onclick');
+        if (href && href.includes(currentPage)) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// ===== FILTER LOGIC =====
+function getFilterValues() {
+    return {
+        brand: document.querySelector('.filter-select').value,
+        bodyType: Array.from(document.querySelectorAll('.type-btn.active')).map(btn => btn.textContent.trim()),
+        priceFrom: parseInt(document.querySelector('.price-inputs input:nth-child(1)').value) || 0,
+        priceTo: parseInt(document.querySelector('.price-inputs input:nth-child(2)').value) || Infinity,
+        warrantyOnly: document.querySelector('.warranty-toggle input').checked
+    };
+}
+
+function applyFilters() {
+    const filters = getFilterValues();
+    const carCards = document.querySelectorAll('.car-card');
+    let visibleCount = 0;
+
+    carCards.forEach(card => {
+        const brand = card.getAttribute('data-brand');
+        const bodyType = card.getAttribute('data-body-type');
+        const price = parseInt(card.getAttribute('data-price'));
+        const warranty = card.getAttribute('data-warranty');
+
+        // Check brand filter
+        const brandMatch = filters.brand === 'All Brands' || brand === filters.brand;
+
+        // Check body type filter
+        const bodyTypeMatch = filters.bodyType.length === 0 || filters.bodyType.includes(bodyType);
+
+        // Check price filter
+        const priceMatch = price >= filters.priceFrom && price <= filters.priceTo;
+
+        // Check warranty filter
+        const warrantyMatch = !filters.warrantyOnly || warranty === 'yes';
+
+        // Show/hide card based on all filters
+        const shouldShow = brandMatch && bodyTypeMatch && priceMatch && warrantyMatch;
+        card.style.display = shouldShow ? 'grid' : 'none';
+        if (shouldShow) visibleCount++;
+    });
+
+    // Show message if no results
+    const carsList = document.querySelector('.cars-list');
+    let noResultsMsg = carsList.querySelector('.no-results-message');
+    
+    if (visibleCount === 0) {
+        if (!noResultsMsg) {
+            noResultsMsg = document.createElement('div');
+            noResultsMsg.className = 'no-results-message';
+            noResultsMsg.style.cssText = 'grid-column: 1/-1; text-align: center; padding: 40px 20px; color: #9ca3af; font-size: 16px;';
+            noResultsMsg.textContent = 'Нет автомобилей, соответствующих вашим фильтрам';
+            carsList.insertBefore(noResultsMsg, carsList.querySelector('.pagination'));
+        }
+    } else if (noResultsMsg) {
+        noResultsMsg.remove();
+    }
+
+    // Hide pagination if results fit on one page (5 cars per page)
+    const pagination = document.querySelector('.pagination');
+    if (pagination) {
+        pagination.style.display = visibleCount > 5 ? 'flex' : 'none';
+    }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    setActiveNavLink();
+
+    // Smooth fade-in effect
+    document.documentElement.style.opacity = '1';
+
+    // Search functionality
+    const searchInput = document.querySelector('.search-bar input');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                console.log('Search for:', this.value);
+            }
+        });
+    }
+
+    // Filter functionality
+    const showResultsBtn = document.querySelector('.show-results-btn');
+    if (showResultsBtn) {
+        showResultsBtn.addEventListener('click', applyFilters);
+    }
+
+    // Update active body type button - now allows multiple selections
+    document.querySelectorAll('.type-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+    });
+
+    // Brand dropdown change
+    const brandSelect = document.querySelector('.filter-select');
+    if (brandSelect) {
+        brandSelect.addEventListener('change', function() {
+            // Optional: auto-apply filters on dropdown change
+            // applyFilters();
+        });
+    }
+
+    // Add page transition animation
+    document.documentElement.style.transition = 'opacity 0.3s ease';
+
+    // Update auth UI
+    updateAuthUI();
+});
+
+// Handle browser back/forward
+window.addEventListener('pageshow', function() {
+    setActiveNavLink();
+    document.documentElement.style.opacity = '1';
+});
+
+// ===== AUTHENTICATION MANAGEMENT =====
+function checkAuthStatus() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return currentUser;
+}
+
+function logout() {
+    if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('rememberMe');
+        alert('You have been logged out.');
+        window.location.href = 'index.html';
+    }
+}
+
+function updateAuthUI() {
+    const currentUser = checkAuthStatus();
+    const headerButtons = document.querySelector('.header-buttons');
+    
+    if (currentUser && headerButtons) {
+        headerButtons.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 16px; margin-right: -18px;">
+                <span style="color: #4b5563; font-weight: 500;">Hi, ${currentUser.firstName}!</span>
+                <button class="btn-outline" onclick="logout()" style="margin: 0;">Logout</button>
+            </div>
+        `;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateAuthUI();
+});
+
+// Heart/favorite functionality
+document.querySelectorAll('.car-favorite').forEach(heart => {
+    heart.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.style.color = this.style.color === 'rgb(239, 68, 68)' ? '#d1d5db' : '#ef4444';
+    });
+});
+
+// ===== LOAD MARKETPLACE CARS =====
+function formatCurrency(value) {
+    return new Intl.NumberFormat('ru-RU', {
+        maximumFractionDigits: 0
+    }).format(parseInt(value)) + ' ₸';
+}
+
+function loadMarketplaceCars() {
+    const marketplaceCars = JSON.parse(localStorage.getItem('marketplaceCars') || '[]');
+    const carsList = document.querySelector('.cars-list');
+    const paginationElement = document.querySelector('.pagination');
+    
+    if (!carsList) return;
+    
+    // Get all car cards (default + user created)
+    const allCars = [
+        {
+            id: 1,
+            name: 'Toyota Land Cruiser 300',
+            year: 2024,
+            mileage: 0,
+            location: 'Almaty',
+            price: 68000000,
+            image: 'https://www.ixbt.com/img/n1/news/2022/4/2/Toyota-Land-Cruiser-Widebody-By-KHANN-International-New-1_large.jpg',
+            brand: 'Toyota',
+            bodyType: 'SUV',
+            transmission: 'Automatic',
+            warranty: false
+        },
+        {
+            id: 2,
+            name: 'BMW M5 Competition 2024',
+            year: 2024,
+            mileage: 500,
+            location: 'Nur-Sultan',
+            price: 95500000,
+            image: 'https://car-images.bauersecure.com/wp-images/200647/m5g90_61.jpg',
+            brand: 'BMW',
+            bodyType: 'Sedan',
+            transmission: 'Automatic',
+            warranty: false
+        },
+        {
+            id: 3,
+            name: 'Porsche 911 Carrera S',
+            year: 2023,
+            mileage: 12450,
+            location: 'Almaty',
+            price: 85500000,
+            image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Porsche_911_Carrera_S_%28991.2%29_2.2%22.jpg/1200px-Porsche_911_Carrera_S_%28991.2%29_2.2%22.jpg',
+            brand: 'Porsche',
+            bodyType: 'Coupe',
+            transmission: 'Automatic',
+            warranty: false
+        },
+        {
+            id: 4,
+            name: 'Toyota Camry 2022',
+            year: 2022,
+            mileage: 28500,
+            location: 'Aktau',
+            price: 18500000,
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfIMqm9kvRC_5VRv2x0OO1OlC3SWUwx9p_6Q&s',
+            brand: 'Toyota',
+            bodyType: 'Sedan',
+            transmission: 'Automatic',
+            warranty: false
+        },
+        {
+            id: 5,
+            name: 'Mercedes E-Class 2021',
+            year: 2021,
+            mileage: 42100,
+            location: 'Karaganda',
+            price: 42900000,
+            image: 'https://iat.ru/uploads/origin/models/685590/1.webp',
+            brand: 'Mercedes',
+            bodyType: 'Sedan',
+            transmission: 'Automatic',
+            warranty: false
+        }
+    ];
+    
+    // Add user-created cars
+    if (marketplaceCars && marketplaceCars.length > 0) {
+        marketplaceCars.forEach(car => {
+            allCars.push({
+                id: car.id,
+                name: car.title,
+                year: car.year,
+                mileage: car.mileage,
+                location: car.location,
+                price: car.price,
+                image: car.photos && car.photos.length > 0 ? car.photos[0] : 'https://via.placeholder.com/400x300?text=No+Photo',
+                brand: car.make,
+                bodyType: car.bodyType,
+                transmission: car.transmission,
+                warranty: false
+            });
+        });
+    }
+    
+    // Clear existing cars except pagination
+    const existingCards = carsList.querySelectorAll('.car-card');
+    existingCards.forEach(card => card.remove());
+    
+    // Add all cars to the list
+    allCars.forEach(car => {
+        const carCard = document.createElement('div');
+        carCard.className = 'car-card';
+        carCard.setAttribute('data-brand', car.brand);
+        carCard.setAttribute('data-body-type', car.bodyType);
+        carCard.setAttribute('data-price', car.price);
+        carCard.setAttribute('data-warranty', car.warranty ? 'true' : 'false');
+        
+        carCard.innerHTML = `
+            <img src="${car.image}" alt="${car.name}" class="car-image">
+            <div class="car-info">
+                <h3>${car.name}</h3>
+                <p class="car-meta">${car.year} • ${car.mileage.toLocaleString('ru-RU')} км • ${car.location}</p>
+            </div>
+            <div class="car-price">
+                <div class="price">${formatCurrency(car.price)}</div>
+                <div class="monthly">${formatCurrency(Math.round(car.price / 48))}/мес</div>
+            </div>
+        `;
+        
+        carCard.addEventListener('click', () => {
+            localStorage.setItem('selectedCar', JSON.stringify(car));
+            navigateTo('product.html?id=' + car.id);
+        });
+        
+        carsList.insertBefore(carCard, paginationElement);
+    });
+}
+
+// Load marketplace cars on page load
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.querySelector('.cars-list')) {
+        loadMarketplaceCars();
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account - NextGear</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background: #ffffff;
+    color: #111827;
+    overflow-x: hidden;
+}
+
+//* ===== UNIFIED HEADER ===== */
+header {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: #ffffff;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 24px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+}
+
+.logo i {
+    font-size: 28px;
+}
+
+/* SEARCH BAR */
+.search-section {
+    flex: 1;
+    max-width: 400px;
+    position: relative;
+}
+
+.search {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    transition: 0.3s ease;
+}
+
+.search::placeholder {
+    color: #9ca3af;
+}
+
+.search:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+/* NAVIGATION MENU */
+.nav-menu {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-right: auto;
+}
+
+.nav-link {
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    color: #4b5563;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    background: #f3f4f6;
+    color: #1a202c;
+}
+
+.nav-link.active {
+    color: #2563eb;
+    background: #eff6ff;
+}
+
+/* HEADER BUTTONS */
+.header-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.header-buttons button {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #d1d5db;
+    color: #4b5563;
+}
+
+.btn-outline:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+    color: #1a202c;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+    transform: translateY(-1px);
+}
+
+
+/* MAIN LAYOUT */
+.auth-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 80px);
+}
+
+/* LEFT SIDE - HERO */
+.hero-section {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.85) 0%, rgba(29, 78, 216, 0.85) 100%), url('https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=1200&h=800&fit=crop') center/cover no-repeat;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 60px;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 480px;
+}
+
+.hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.9);
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(255,255,255,0.15);
+    padding: 8px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.hero-label i {
+    font-size: 16px;
+}
+
+.hero-title {
+    font-size: 56px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 24px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.7;
+    margin-bottom: 48px;
+    font-weight: 500;
+}
+
+.hero-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    color: rgba(255,255,255,0.9);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.feature-item i {
+    font-size: 20px;
+    margin-top: 0px;
+    color: #ffffff;
+    min-width: 24px;
+    flex-shrink: 0;
+}
+
+/* RIGHT SIDE - REGISTRATION CARD */
+.form-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    background: #ffffff;
+}
+
+.register-card {
+    width: 100%;
+    max-width: 400px;
+}
+
+.card-header {
+    margin-bottom: 32px;
+}
+
+.card-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.card-subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* FORM GROUP */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 10px;
+    background: #f9fafb;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    transition: 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #9ca3af;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #9ca3af;
+    font-size: 18px;
+    transition: 0.2s ease;
+}
+
+.password-toggle:hover {
+    color: #6b7280;
+}
+
+.form-row {
+    display: flex;
+    gap: 12px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 28px;
+}
+
+.checkbox-wrapper input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #2563eb;
+    margin-top: 2px;
+}
+
+.checkbox-wrapper label {
+    cursor: pointer;
+    color: #6b7280;
+    margin: 0;
+    text-transform: none;
+    font-weight: 500;
+    letter-spacing: normal;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.btn-register {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    margin-bottom: 24px;
+}
+
+.btn-register:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+.btn-register:active {
+    transform: translateY(0);
+}
+
+/* DIVIDER */
+.divider-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.divider {
+    flex: 1;
+    height: 1px;
+    background: #e5e7eb;
+}
+
+.divider-text {
+    padding: 0 12px;
+    font-size: 12px;
+    color: #9ca3af;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* SOCIAL BUTTONS */
+.social-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 12px;
+    border: 1.5px solid #e5e7eb;
+    background: #f9fafb;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+}
+
+.social-btn:hover {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+    transform: translateY(-2px);
+}
+
+/* FOOTER TEXT */
+.register-footer {
+    text-align: center;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.register-footer a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+.register-footer a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: #ffffff;
+    padding: 40px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1280px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.footer-column h4 {
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.footer-column p,
+.footer-column a {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 8px;
+    line-height: 1.6;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.footer-column a:hover {
+    color: #2563eb;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .auth-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-section {
+        display: none;
+    }
+
+    .form-section {
+        min-height: calc(100vh - 80px);
+    }
+
+    .hero-title {
+        font-size: 42px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    header {
+        padding: 16px 20px;
+    }
+
+    .header-content {
+        gap: 16px;
+    }
+
+    .search-section {
+        max-width: 250px;
+    }
+
+    .header-buttons {
+        gap: 8px;
+    }
+
+    .btn-primary {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .form-section {
+        padding: 40px 20px;
+    }
+
+    .register-card {
+        max-width: 100%;
+    }
+
+    .card-title {
+        font-size: 28px;
+    }
+
+    .form-group input {
+        padding: 12px 14px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .hero-section {
+        padding: 60px 40px;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo" onclick="navigateTo('index.html')">
+            <i class="fas fa-car"></i>
+            NextGear
+        </div>
+        <div class="search-section">
+            <i class="search-icon fas fa-search"></i>
+            <input class="search" placeholder="Search for make, model or year...">
+        </div>
+        <div class="nav-menu">
+            <button class="nav-link" onclick="navigateTo('index.html')">Marketplace</button>
+            <button class="nav-link" onclick="navigateTo('filter.html')">Filter</button>
+            <button class="nav-link" onclick="navigateTo('kredit.html')">Credit</button>
+            <button class="nav-link" onclick="navigateTo('idk.html')">Sell</button>
+            <button class="nav-link" onclick="navigateTo('dashboard.html')">Dashboard</button>
+        </div>
+        <div class="header-buttons">
+            <button class="btn-outline" onclick="navigateTo('vxod.html')">Sign In</button>
+            <button class="btn-primary" onclick="navigateTo('regis.html')">Register</button>
+        </div>
+    </div>
+</header>
+
+
+<div class="auth-container">
+    <!-- LEFT SIDE - HERO -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <div class="hero-label">
+                <i class="fas fa-sparkles"></i>
+                AutoNexus Platform
+            </div>
+            <h1 class="hero-title">Join thousands of car buyers.</h1>
+            <p class="hero-subtitle">Create your account to access financing, bookmarks, and exclusive deals from trusted dealers.</p>
+
+            <div class="hero-features">
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Fast account setup in just 2 minutes</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Save favorite vehicles and track prices</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Get instant financing pre-approval</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Access buyer protection and support</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE - REGISTRATION FORM -->
+    <div class="form-section">
+        <div class="register-card">
+            <div class="card-header">
+                <h2 class="card-title">Create Account</h2>
+                <p class="card-subtitle">Join our automotive marketplace today.</p>
+            </div>
+
+            <form id="registerForm">
+                <!-- NAME & SURNAME FIELDS -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <div class="input-wrapper">
+                            <input type="text" placeholder="Your first name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <div class="input-wrapper">
+                            <input type="text" placeholder="Your last name" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EMAIL FIELD -->
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <div class="input-wrapper">
+                        <input type="email" placeholder="you@example.com" required>
+                    </div>
+                </div>
+
+                <!-- PHONE FIELD -->
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <div class="input-wrapper">
+                        <input type="tel" placeholder="+7 (777) 888-8800" required>
+                    </div>
+                </div>
+
+                <!-- PASSWORD FIELD -->
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="passwordInput" placeholder="••••••••" required>
+                        <span class="password-toggle" onclick="togglePassword()">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- CONFIRM PASSWORD FIELD -->
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="confirmPasswordInput" placeholder="••••••••" required>
+                        <span class="password-toggle" onclick="toggleConfirmPassword()">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- TERMS CHECKBOX -->
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the terms of service and privacy policy</label>
+                </div>
+
+                <!-- REGISTER BUTTON -->
+                <button type="submit" class="btn-register">Create Account</button>
+            </form>
+
+            <!-- DIVIDER -->
+            <div class="divider-container">
+                <div class="divider"></div>
+                <div class="divider-text">Or sign up with</div>
+                <div class="divider"></div>
+            </div>
+
+            <!-- SOCIAL BUTTONS -->
+            <div class="social-buttons">
+                <button class="social-btn" title="Sign up with Google">
+                    <i class="fab fa-google"></i>
+                </button>
+                <button class="social-btn" title="Sign up with Apple">
+                    <i class="fab fa-apple"></i>
+                </button>
+                <button class="social-btn" title="Sign up with Facebook">
+                    <i class="fab fa-facebook"></i>
+                </button>
+            </div>
+
+            <!-- FOOTER TEXT -->
+            <div class="register-footer">
+                Already have an account? <a href="vxod.html">Sign in here</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h4>NextGear</h4>
+            <p>Marketplace for buying and selling cars in Kazakhstan.</p>
+            <p>© 2024 NextGear. All rights reserved.</p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Marketplace</h4>
+            <p><a href="#">Buy a Car</a></p>
+            <p><a href="#">Sell a Car</a></p>
+            <p><a href="#">Car Finance</a></p>
+            <p><a href="#">Insurance</a></p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Support</h4>
+            <p><a href="#">Help Center</a></p>
+            <p><a href="#">Terms of Service</a></p>
+            <p><a href="#">Privacy Policy</a></p>
+            <p><a href="#">Contact</a></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Toggle password visibility
+function togglePassword() {
+    const input = document.getElementById('passwordInput');
+    const toggle = document.querySelector('.password-toggle i');
+
+    if (input.type === 'password') {
+        input.type = 'text';
+        toggle.classList.remove('fa-eye');
+        toggle.classList.add('fa-eye-slash');
+    } else {
+        input.type = 'password';
+        toggle.classList.remove('fa-eye-slash');
+        toggle.classList.add('fa-eye');
+    }
+}
+
+// Toggle confirm password visibility
+function toggleConfirmPassword() {
+    const input = document.getElementById('confirmPasswordInput');
+    const icon = event.target.closest('.password-toggle');
+    const toggle = icon.querySelector('i');
+
+    if (input.type === 'password') {
+        input.type = 'text';
+        toggle.classList.remove('fa-eye');
+        toggle.classList.add('fa-eye-slash');
+    } else {
+        input.type = 'password';
+        toggle.classList.remove('fa-eye-slash');
+        toggle.classList.add('fa-eye');
+    }
+}
+
+// ===== REGISTRATION LOGIC =====
+// Toggle password visibility
+function togglePassword() {
+    const input = document.getElementById('passwordInput');
+    const toggle = document.querySelector('.password-toggle i');
+
+    if (input.type === 'password') {
+        input.type = 'text';
+        toggle.classList.remove('fa-eye');
+        toggle.classList.add('fa-eye-slash');
+    } else {
+        input.type = 'password';
+        toggle.classList.remove('fa-eye-slash');
+        toggle.classList.add('fa-eye');
+    }
+}
+
+function toggleConfirmPassword() {
+    const input = document.getElementById('confirmPasswordInput');
+    const toggle = document.querySelectorAll('.password-toggle i')[1];
+
+    if (input.type === 'password') {
+        input.type = 'text';
+        toggle.classList.remove('fa-eye');
+        toggle.classList.add('fa-eye-slash');
+    } else {
+        input.type = 'password';
+        toggle.classList.remove('fa-eye-slash');
+        toggle.classList.add('fa-eye');
+    }
+}
+
+// Form submission
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Get form values
+    const inputs = this.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="password"]');
+    const firstName = inputs[0].value.trim();
+    const lastName = inputs[1].value.trim();
+    const email = inputs[2].value.trim();
+    const phone = inputs[3].value.trim();
+    const password = inputs[4].value;
+    const confirmPassword = inputs[5].value;
+    const termsCheckbox = document.getElementById('terms').checked;
+
+    // Validation
+    if (!firstName || !lastName || !email || !phone || !password || !confirmPassword) {
+        alert('Please fill in all fields!');
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+    }
+
+    if (password.length < 6) {
+        alert('Password must be at least 6 characters long!');
+        return;
+    }
+
+    if (!termsCheckbox) {
+        alert('Please agree to the terms of service and privacy policy!');
+        return;
+    }
+
+    // Check if user already exists
+    let users = JSON.parse(localStorage.getItem('users')) || {};
+    if (users[email]) {
+        alert('An account with this email already exists!');
+        return;
+    }
+
+    // Create new user
+    const newUser = {
+        firstName,
+        lastName,
+        email,
+        phone,
+        password // Note: In production, this should be hashed
+    };
+
+    // Save to localStorage
+    users[email] = newUser;
+    localStorage.setItem('users', JSON.stringify(users));
+
+    alert('Account created successfully! Redirecting to login page...');
+    setTimeout(() => {
+        window.location.href = 'vxod.html';
+    }, 1000);
+});
+
+// Social button clicks
+document.querySelectorAll('.social-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const provider = this.title.split(' ').pop().toLowerCase();
+        alert(`Sign up with ${provider} would redirect to OAuth flow.`);
+    });
+});
+</script>
+
+<script>
+// ===== UNIFIED NAVIGATION SCRIPT =====
+function getCurrentPage() {
+    return window.location.pathname.split('/').pop() || 'index.html';
+}
+function navigateTo(page) {
+    if (page) {
+        document.documentElement.style.opacity = '0.8';
+        setTimeout(() => {
+            window.location.href = page;
+        }, 150);
+    }
+}
+function setActiveNavLink() {
+    const currentPage = getCurrentPage();
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('onclick');
+        if (href && href.includes(currentPage)) {
+            link.classList.add('active');
+        }
+    });
+}
+document.addEventListener('DOMContentLoaded', function() {
+    setActiveNavLink();
+    document.documentElement.style.opacity = '1';
+    document.documentElement.style.transition = 'opacity 0.3s ease';
+});
+window.addEventListener('pageshow', function() {
+    setActiveNavLink();
+    document.documentElement.style.opacity = '1';
+});
+
+// ===== AUTHENTICATION MANAGEMENT =====
+function checkAuthStatus() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return currentUser;
+}
+
+function logout() {
+    if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('rememberMe');
+        alert('You have been logged out.');
+        window.location.href = 'index.html';
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Автокредит - NextGear</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #f8f9fa;
+    color: #111827;
+}
+
+/* ===== UNIFIED HEADER ===== */
+header {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: #ffffff;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 24px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+}
+
+.logo i {
+    font-size: 28px;
+}
+
+/* SEARCH BAR */
+.search-section {
+    flex: 1;
+    max-width: 450px;
+    position: relative;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    transition: 0.3s ease;
+}
+
+.search-bar input::placeholder {
+    color: #9ca3af;
+}
+
+.search-bar input:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+/* NAVIGATION MENU */
+.nav-menu {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-right: auto;
+}
+
+.nav-link {
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    color: #4b5563;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    background: #f3f4f6;
+    color: #1a202c;
+}
+
+.nav-link.active {
+    color: #2563eb;
+    background: #eff6ff;
+}
+
+/* HEADER BUTTONS */
+.header-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.header-buttons button {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #d1d5db;
+    color: #4b5563;
+}
+
+.btn-outline:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+    color: #1a202c;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+    transform: translateY(-1px);
+}
+
+/* CATEGORY TABS */
+.category-tabs {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.category-container {
+    width: 100%;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.category-card {
+    background: #f9fafb;
+    padding: 24px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 1px solid #e5e7eb;
+}
+
+.category-card:hover {
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+}
+
+.category-card.active {
+    background: #dbeafe;
+    border-color: #2563eb;
+}
+
+.category-icon {
+    font-size: 32px;
+    color: #2563eb;
+    margin-bottom: 12px;
+}
+
+.category-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* MAIN CONTENT */
+.main-container {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 40px;
+    min-height: calc(100vh - 400px);
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.page-header p {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+.credit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* LEFT COLUMN */
+.credit-left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #111827;
+}
+
+/* SLIDERS */
+.slider-section {
+    margin-bottom: 28px;
+}
+
+.slider-section:last-child {
+    margin-bottom: 0;
+}
+
+.slider-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.slider-label span:first-child {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.slider-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #e5e7eb;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2563eb;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    transition: 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: #1e40af;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2563eb;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    transition: 0.2s;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    background: #1e40af;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.slider-range {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 8px;
+}
+
+/* FORM */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #111827;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #f9fafb;
+    font-size: 14px;
+    transition: 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.checkbox-group input {
+    width: auto;
+    min-width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.submit-btn:hover {
+    background: #1e40af;
+}
+
+/* RIGHT COLUMN */
+.credit-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* PAYMENT CALCULATOR */
+.payment-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.payment-value {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 8px;
+}
+
+.monthly-payment {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 24px;
+}
+
+.payment-breakdown {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 20px;
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.breakdown-item:last-child {
+    margin-bottom: 0;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    font-weight: 600;
+}
+
+.breakdown-label {
+    color: #6b7280;
+}
+
+.breakdown-value {
+    color: #111827;
+    font-weight: 600;
+}
+
+.info-note {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    line-height: 1.6;
+}
+
+/* HELP BLOCK */
+.help-card {
+    background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+    border-radius: 12px;
+    padding: 24px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.help-card::before {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.help-card::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+.help-content {
+    position: relative;
+    z-index: 1;
+}
+
+.help-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.help-text {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    opacity: 0.95;
+}
+
+.help-btn {
+    background: white;
+    color: #2563eb;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.help-btn:hover {
+    background: #f3f4f6;
+}
+
+/* SELECTED CAR */
+.selected-car {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 200px 1fr 180px;
+    gap: 20px;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid #e5e7eb;
+}
+
+.selected-car img {
+    width: 200px;
+    height: 140px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.selected-car-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.selected-car-meta {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.selected-car-price {
+    text-align: right;
+}
+
+.selected-car-price .price-label {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-bottom: 4px;
+}
+
+.selected-car-price .price-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* FOOTER */
+footer {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: #ffffff;
+    padding: 40px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.footer-column h4 {
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.footer-column p {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.footer-column a {
+    color: #6b7280;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.footer-column a:hover {
+    color: #2563eb;
+}
+
+/* MODAL STYLES */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 700px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.modal-close:hover {
+    color: #111827;
+}
+
+.car-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.car-item {
+    display: grid;
+    grid-template-columns: 180px 1fr 120px;
+    gap: 16px;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.car-item:hover {
+    border-color: #2563eb;
+    background-color: #f0f9ff;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+.car-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.car-item-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #111827;
+}
+
+.car-item-info p {
+    font-size: 13px;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.car-item-price {
+    text-align: right;
+    font-size: 18px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.select-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.select-btn:hover {
+    background: #1e40af;
+}
+
+.change-car-btn {
+    background: #f3f4f6;
+    color: #111827;
+    border: 1px solid #e5e7eb;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-bottom: 24px;
+}
+
+.change-car-btn:hover {
+    background: #e5e7eb;
+}
+
+@media (max-width: 1024px) {
+    .credit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .selected-car {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .selected-car img {
+        width: 100%;
+    }
+
+    .selected-car-price {
+        text-align: center;
+    }
+
+    .car-item {
+        grid-template-columns: 1fr;
+    }
+
+    .car-item img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .car-item-price {
+        text-align: left;
+    }
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo" onclick="navigateTo('index.html')">
+            <i class="fas fa-car"></i>
+            NextGear
+        </div>
+        <div class="search-section search-bar">
+            <i class="search-icon fas fa-search"></i>
+            <input type="text" placeholder="Search for make, model or year…">
+        </div>
+        <div class="nav-menu">
+            <button class="nav-link" onclick="navigateTo('index.html')">Marketplace</button>
+            <button class="nav-link" onclick="navigateTo('filter.html')">Filter</button>
+            <button class="nav-link" onclick="navigateTo('kredit.html')">Credit</button>
+            <button class="nav-link" onclick="navigateTo('idk.html')">Sell</button>
+            <button class="nav-link" onclick="navigateTo('dashboard.html')">Dashboard</button>
+        </div>
+        <div class="header-buttons">
+            <button class="btn-outline" onclick="navigateTo('vxod.html')">Sign In</button>
+            <button class="btn-primary" onclick="navigateTo('regis.html')">Register</button>
+        </div>
+    </div>
+</header>
+
+<div class="main-container">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h1>Оформление автокредита</h1>
+            <p>Одобрение заявки в течение 5 минут</p>
+        </div>
+
+        <div class="credit-grid">
+            <!-- LEFT COLUMN -->
+            <div class="credit-left">
+                <!-- CREDIT PARAMETERS CARD -->
+                <div class="card">
+                    <h2 class="card-title">Параметры кредита</h2>
+
+                    <!-- CREDIT AMOUNT -->
+                    <div class="slider-section">
+                        <div class="slider-label">
+                            <span>Сумма кредита</span>
+                            <span class="slider-value" id="amountValue">15,000,000 ₸</span>
+                        </div>
+                        <input type="range" id="amountSlider" min="500000" max="50000000" value="15000000" step="100000">
+                        <div class="slider-range">500 000 — 50 000 000 ₸</div>
+                    </div>
+
+                    <!-- CREDIT TERM -->
+                    <div class="slider-section">
+                        <div class="slider-label">
+                            <span>Срок кредитирования</span>
+                            <span class="slider-value" id="termValue">48 месяцев</span>
+                        </div>
+                        <input type="range" id="termSlider" min="12" max="84" value="48" step="1">
+                        <div class="slider-range">1 год — 7 лет</div>
+                    </div>
+
+                    <!-- DOWN PAYMENT -->
+                    <div class="slider-section">
+                        <div class="slider-label">
+                            <span>Первоначальный взнос (20%)</span>
+                            <span class="slider-value" id="downPaymentValue">3,000,000 ₸</span>
+                        </div>
+                        <input type="range" id="downPaymentSlider" min="500000" max="50000000" value="3000000" step="100000">
+                        <div class="slider-range">Рассчитывается автоматически</div>
+                    </div>
+                </div>
+
+                <!-- PERSONAL DATA CARD -->
+                <div class="card">
+                    <h2 class="card-title">Ваши данные</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Имя</label>
+                            <input type="text" placeholder="Ваше имя">
+                        </div>
+                        <div class="form-group">
+                            <label>Фамилия</label>
+                            <input type="text" placeholder="Ваша фамилия">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>ИИН</label>
+                        <input type="text" placeholder="123456789012">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Номер телефона</label>
+                        <input type="tel" placeholder="+7 (---) ---">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Средний доход в месяц</label>
+                        <input type="text" placeholder="500 000 ₸">
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consent">
+                        <label for="consent">Я даю согласие на обработку персональных данных и ознакомлен с политикой конфиденциальности</label>
+                    </div>
+
+                    <button class="submit-btn">Отправить заявку</button>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="credit-right">
+                <!-- PAYMENT CALCULATOR -->
+                <div class="payment-card">
+                    <div class="payment-value">Ежемесячный платеж</div>
+                    <div class="monthly-payment" id="monthlyPayment">312,450 ₸</div>
+
+                    <div class="payment-breakdown">
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Процентная ставка</span>
+                            <span class="breakdown-value">от 14.5%</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Сумма кредита</span>
+                            <span class="breakdown-value" id="totalCredit">12,000,000 ₸</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Период рассрочки</span>
+                            <span class="breakdown-value" id="totalTerm">48 месяцев</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Общая переплата</span>
+                            <span class="breakdown-value" id="totalOverpay">2,987,600 ₸</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Всего к выплате</span>
+                            <span class="breakdown-value" id="totalPayment">14,987,600 ₸</span>
+                        </div>
+                    </div>
+
+                    <div class="info-note">
+                        ℹ️ Расчет является предварительным и может отличаться в зависимости от введённых данных и условий банка
+                    </div>
+                </div>
+
+                <!-- HELP CARD -->
+                <div class="help-card">
+                    <div class="help-content">
+                        <h3 class="help-title">Нужна помощь?</h3>
+                        <p class="help-text">Наши менеджеры помогут подобрать лучшие условия кредитования</p>
+                        <button class="help-btn">Связаться с нами</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SELECTED CAR -->
+        <div class="selected-car">
+            <img src="https://www.cnet.com/a/img/resize/5d412b9c47c52d6047d4cf0aa138cb666063d0a3/hub/2020/07/01/f9fd026c-cf70-4170-a1c6-53521c35a21a/2020-porsche-911-carrera-s-manual-001.jpg?auto=webp&fit=crop&height=675&width=1200" alt="Porsche 911">
+            <div class="selected-car-info">
+                <h3>Porsche 911 Carrera S</h3>
+                <div class="selected-car-meta">
+                    2023 • 12,450 км • Almaty
+                </div>
+            </div>
+            <div class="selected-car-price">
+                <div class="price-label">Цена автомобиля</div>
+                <div class="price-value" data-price="85500000">85,500,000 ₸</div>
+            </div>
+        </div>
+
+        <button class="change-car-btn" onclick="openCarSelectionModal()">↻ Выбрать другой автомобиль</button>
+    </div>
+</div>
+
+<!-- CAR SELECTION MODAL -->
+<div id="carSelectionModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span>Выберите автомобиль</span>
+            <button class="modal-close" onclick="closeCarSelectionModal()">✕</button>
+        </div>
+        <div class="car-list" id="carList"></div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h4>NextGear</h4>
+            <p>Marketplace for buying and selling cars in Kazakhstan.</p>
+            <p>© 2024 NextGear. All rights reserved.</p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Marketplace</h4>
+            <p><a href="#">Buy a Car</a></p>
+            <p><a href="#">Sell a Car</a></p>
+            <p><a href="#">Car Finance</a></p>
+            <p><a href="#">Insurance</a></p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Support</h4>
+            <p><a href="#">Help Center</a></p>
+            <p><a href="#">Terms of Service</a></p>
+            <p><a href="#">Privacy Policy</a></p>
+            <p><a href="#">Contact</a></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// ===== CREDIT CALCULATOR LOGIC =====
+
+const amountSlider = document.getElementById('amountSlider');
+const amountValue = document.getElementById('amountValue');
+const termSlider = document.getElementById('termSlider');
+const termValue = document.getElementById('termValue');
+const downPaymentSlider = document.getElementById('downPaymentSlider');
+const downPaymentValue = document.getElementById('downPaymentValue');
+
+// Format currency helper
+function formatCurrency(value) {
+    return new Intl.NumberFormat('ru-RU', {
+        maximumFractionDigits: 0
+    }).format(Math.round(value)) + ' ₸';
+}
+
+// Get interest rate based on down payment percentage
+function getInterestRate(downPaymentPercent) {
+    if (downPaymentPercent >= 30) return 0.125; // 12.5%
+    if (downPaymentPercent >= 20) return 0.145; // 14.5%
+    if (downPaymentPercent >= 10) return 0.165; // 16.5%
+    return 0.185; // 18.5%
+}
+
+// Calculate monthly payment using annuity formula
+function calculatePayment() {
+    const creditAmount = parseFloat(amountSlider.value);
+    const months = parseInt(termSlider.value);
+    const downPayment = parseFloat(downPaymentSlider.value);
+    
+    // Calculate down payment percentage
+    const totalPrice = creditAmount + downPayment;
+    const downPaymentPercent = (downPayment / totalPrice) * 100;
+    
+    // Get interest rate based on down payment
+    const annualRate = getInterestRate(downPaymentPercent);
+    const monthlyRate = annualRate / 12;
+
+    // Annuity payment formula
+    const monthlyPayment = creditAmount > 0 && months > 0
+        ? (creditAmount * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1)
+        : 0;
+    
+    const totalPayment = monthlyPayment * months;
+    const totalOverpay = totalPayment - creditAmount;
+
+    // Update UI
+    document.getElementById('monthlyPayment').textContent = formatCurrency(monthlyPayment);
+    document.getElementById('totalCredit').textContent = formatCurrency(creditAmount);
+    document.getElementById('totalTerm').textContent = months + ' месяцев';
+    document.getElementById('totalOverpay').textContent = formatCurrency(totalOverpay);
+    document.getElementById('totalPayment').textContent = formatCurrency(totalPayment);
+    
+    // Update interest rate display
+    const ratePercent = (annualRate * 100).toFixed(1);
+    document.querySelector('.breakdown-item span:nth-child(2)').textContent = ratePercent + '%';
+    
+    // Store current calculation
+    window.currentCalculation = {
+        creditAmount,
+        downPayment,
+        months,
+        annualRate,
+        monthlyPayment,
+        totalPayment,
+        totalOverpay
+    };
+}
+
+// Update credit amount slider
+amountSlider.addEventListener('input', function() {
+    const amount = parseFloat(this.value);
+    amountValue.textContent = formatCurrency(amount);
+    
+    // Auto-update down payment (20% by default)
+    downPaymentSlider.value = amount * 0.2;
+    downPaymentValue.textContent = formatCurrency(amount * 0.2);
+    
+    calculatePayment();
+});
+
+// Update term slider
+termSlider.addEventListener('input', function() {
+    const months = parseInt(this.value);
+    const years = Math.floor(months / 12);
+    const remainingMonths = months % 12;
+
+    if (remainingMonths === 0) {
+        termValue.textContent = years + ' лет';
+    } else {
+        termValue.textContent = years + ' лет ' + remainingMonths + ' мес';
+    }
+    calculatePayment();
+});
+
+// Update down payment slider
+downPaymentSlider.addEventListener('input', function() {
+    const downPayment = parseFloat(this.value);
+    downPaymentValue.textContent = formatCurrency(downPayment);
+    calculatePayment();
+});
+
+// Initial calculation
+calculatePayment();
+
+// ===== CAR SELECTION LOGIC =====
+
+// Available cars database
+const availableCars = [
+    {
+        id: 1,
+        name: 'Toyota Land Cruiser 300',
+        year: 2024,
+        mileage: '0 км',
+        location: 'Almaty',
+        price: 68000000,
+        image: 'https://www.ixbt.com/img/n1/news/2022/4/2/Toyota-Land-Cruiser-Widebody-By-KHANN-International-New-1_large.jpg'
+    },
+    {
+        id: 2,
+        name: 'BMW M5 Competition 2024',
+        year: 2024,
+        mileage: '500 км',
+        location: 'Nur-Sultan',
+        price: 95500000,
+        image: 'https://car-images.bauersecure.com/wp-images/200647/m5g90_61.jpg'
+    },
+    {
+        id: 3,
+        name: 'Porsche 911 Carrera S',
+        year: 2023,
+        mileage: '12,450 км',
+        location: 'Almaty',
+        price: 85500000,
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Porsche_911_Carrera_S_%28991.2%29_2.2%22.jpg/1200px-Porsche_911_Carrera_S_%28991.2%29_2.2%22.jpg'
+    },
+    {
+        id: 4,
+        name: 'Toyota Camry 2022',
+        year: 2022,
+        mileage: '28,500 км',
+        location: 'Aktau',
+        price: 18500000,
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfIMqm9kvRC_5VRv2x0OO1OlC3SWUwx9p_6Q&s'
+    },
+    {
+        id: 5,
+        name: 'Mercedes E-Class 2021',
+        year: 2021,
+        mileage: '42,100 км',
+        location: 'Karaganda',
+        price: 42900000,
+        image: 'https://iat.ru/uploads/origin/models/685590/1.webp'
+    },
+    {
+        id: 6,
+        name: 'Audi A6 2023',
+        year: 2023,
+        mileage: '8,200 км',
+        location: 'Almaty',
+        price: 55000000,
+        image: 'https://www.cnet.com/a/img/resize/5d412b9c47c52d6047d4cf0aa138cb666063d0a3/hub/2020/07/01/f9fd026c-cf70-4170-a1c6-53521c35a21a/2020-porsche-911-carrera-s-manual-001.jpg?auto=webp&fit=crop&height=675&width=1200'
+    },
+    {
+        id: 7,
+        name: 'Hyundai Santa Fe 2024',
+        year: 2024,
+        mileage: '1,200 км',
+        location: 'Nur-Sultan',
+        price: 28500000,
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfIMqm9kvRC_5VRv2x0OO1OlC3SWUwx9p_6Q&s'
+    },
+    {
+        id: 8,
+        name: 'Lexus RX 350 2024',
+        year: 2024,
+        mileage: '2,100 км',
+        location: 'Almaty',
+        price: 72000000,
+        image: 'https://www.ixbt.com/img/n1/news/2022/4/2/Toyota-Land-Cruiser-Widebody-By-KHANN-International-New-1_large.jpg'
+    }
+];
+
+// Current selected car
+let selectedCar = availableCars[2]; // Porsche 911 by default
+
+// Open car selection modal
+function openCarSelectionModal() {
+    const modal = document.getElementById('carSelectionModal');
+    const carList = document.getElementById('carList');
+    
+    // Combine available cars with user-created cars
+    let allCars = [...availableCars];
+    
+    // Load user-created cars from localStorage
+    const marketplaceCars = JSON.parse(localStorage.getItem('marketplaceCars') || '[]');
+    if (marketplaceCars && marketplaceCars.length > 0) {
+        marketplaceCars.forEach(car => {
+            // Avoid duplicates
+            if (!allCars.some(c => c.id === car.id)) {
+                allCars.push({
+                    id: car.id,
+                    name: car.title,
+                    year: car.year,
+                    mileage: car.mileage + ' км',
+                    location: car.location,
+                    price: car.price,
+                    image: car.photos && car.photos.length > 0 ? car.photos[0] : 'https://via.placeholder.com/400x300?text=No+Photo'
+                });
+            }
+        });
+    }
+    
+    carList.innerHTML = '';
+    
+    allCars.forEach(car => {
+        const carElement = document.createElement('div');
+        carElement.className = 'car-item';
+        carElement.onclick = () => selectCar(car);
+        
+        carElement.innerHTML = `
+            <img src="${car.image}" alt="${car.name}">
+            <div class="car-item-info">
+                <h4>${car.name}</h4>
+                <p>${car.year} • ${car.mileage} • ${car.location}</p>
+            </div>
+            <div class="car-item-price">${formatCurrency(car.price)}</div>
+        `;
+        
+        carList.appendChild(carElement);
+    });
+    
+    modal.classList.add('active');
+}
+
+// Close car selection modal
+function closeCarSelectionModal() {
+    const modal = document.getElementById('carSelectionModal');
+    modal.classList.remove('active');
+}
+
+// Select a car and update credit
+function selectCar(car) {
+    selectedCar = car;
+    
+    // Update selected car display
+    const selectedCarSection = document.querySelector('.selected-car');
+    selectedCarSection.querySelector('img').src = car.image;
+    selectedCarSection.querySelector('.selected-car-info h3').textContent = car.name;
+    selectedCarSection.querySelector('.selected-car-meta').textContent = 
+        `${car.year} • ${car.mileage} • ${car.location}`;
+    
+    const priceElement = selectedCarSection.querySelector('.price-value');
+    priceElement.setAttribute('data-price', car.price);
+    priceElement.textContent = formatCurrency(car.price);
+    
+    // Update credit amount slider to car price as credit amount (80% as credit, 20% as down payment)
+    const totalPrice = car.price;
+    const creditAmount = Math.round(totalPrice * 0.8);
+    const downPayment = Math.round(totalPrice * 0.2);
+    
+    amountSlider.value = creditAmount;
+    amountValue.textContent = formatCurrency(creditAmount);
+    
+    downPaymentSlider.value = downPayment;
+    downPaymentValue.textContent = formatCurrency(downPayment);
+    
+    // Recalculate
+    calculatePayment();
+    
+    // Close modal
+    closeCarSelectionModal();
+    
+    // Scroll to calculator
+    setTimeout(() => {
+        document.querySelector('.payment-card').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+}
+
+// Close modal when clicking outside
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('carSelectionModal');
+    if (modal) {
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeCarSelectionModal();
+            }
+        });
+    }
+});
+</script>
+
+<script>
+// ===== UNIFIED NAVIGATION SCRIPT & FORM VALIDATION =====
+
+// Get current page
+function getCurrentPage() {
+    return window.location.pathname.split('/').pop() || 'index.html';
+}
+
+// Navigate with smooth transition
+function navigateTo(page) {
+    if (page) {
+        document.documentElement.style.opacity = '0.8';
+        setTimeout(() => {
+            window.location.href = page;
+        }, 150);
+    }
+}
+
+// Mark active nav link
+function setActiveNavLink() {
+    const currentPage = getCurrentPage();
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('onclick');
+        if (href && href.includes(currentPage)) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// ===== AUTHENTICATION MANAGEMENT =====
+function checkAuthStatus() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return currentUser;
+}
+
+function logout() {
+    if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('rememberMe');
+        alert('You have been logged out.');
+        window.location.href = 'index.html';
+    }
+}
+
+function updateAuthUI() {
+    const currentUser = checkAuthStatus();
+    const headerButtons = document.querySelector('.header-buttons');
+    
+    if (currentUser && headerButtons) {
+        headerButtons.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 16px; margin-right: -18px;">
+                <span style="color: #4b5563; font-weight: 500;">Hi, ${currentUser.firstName}!</span>
+                <button class="btn-outline" onclick="logout()" style="margin: 0;">Logout</button>
+            </div>
+        `;
+    }
+}
+
+// ===== CREDIT APPLICATION FORM =====
+
+// Validate personal data
+function validateForm() {
+    const firstName = document.querySelector('input[placeholder="Ваше имя"]').value.trim();
+    const lastName = document.querySelector('input[placeholder="Ваша фамилия"]').value.trim();
+    const iin = document.querySelector('input[placeholder="123456789012"]').value.trim();
+    const phone = document.querySelector('input[placeholder="+7 (---) ---"]').value.trim();
+    const income = document.querySelector('input[placeholder="500 000 ₸"]').value.trim();
+    const consent = document.getElementById('consent').checked;
+
+    // Validation rules
+    if (!firstName) {
+        alert('Пожалуйста, введите имя');
+        return false;
+    }
+    if (!lastName) {
+        alert('Пожалуйста, введите фамилию');
+        return false;
+    }
+    if (iin.length !== 12 || !/^\d+$/.test(iin)) {
+        alert('ИИН должен содержать 12 цифр');
+        return false;
+    }
+    if (phone.length < 10) {
+        alert('Пожалуйста, введите корректный номер телефона');
+        return false;
+    }
+    if (!income || isNaN(parseInt(income))) {
+        alert('Пожалуйста, введите ваш доход');
+        return false;
+    }
+    if (!consent) {
+        alert('Пожалуйста, дайте согласие на обработку персональных данных');
+        return false;
+    }
+
+    return true;
+}
+
+// Submit credit application
+function submitCreditApplication() {
+    if (!validateForm()) {
+        return;
+    }
+
+    const firstName = document.querySelector('input[placeholder="Ваше имя"]').value.trim();
+    const lastName = document.querySelector('input[placeholder="Ваша фамилия"]').value.trim();
+    const iin = document.querySelector('input[placeholder="123456789012"]').value.trim();
+    const phone = document.querySelector('input[placeholder="+7 (---) ---"]').value.trim();
+    const income = parseInt(document.querySelector('input[placeholder="500 000 ₸"]').value.replace(/\D/g, ''));
+
+    // Get current calculation
+    const calc = window.currentCalculation;
+
+    // Create application object
+    const application = {
+        id: Date.now(),
+        firstName,
+        lastName,
+        iin,
+        phone,
+        income,
+        creditAmount: Math.round(calc.creditAmount),
+        downPayment: Math.round(calc.downPayment),
+        loanTerm: calc.months,
+        monthlyPayment: Math.round(calc.monthlyPayment),
+        totalPayment: Math.round(calc.totalPayment),
+        interestRate: (calc.annualRate * 100).toFixed(1),
+        carName: selectedCar.name,
+        carPrice: selectedCar.price,
+        carImage: selectedCar.image,
+        carYear: selectedCar.year,
+        applicationDate: new Date().toLocaleString('ru-RU'),
+        status: 'pending'
+    };
+
+    // Save to localStorage
+    let applications = JSON.parse(localStorage.getItem('creditApplications') || '[]');
+    applications.push(application);
+    localStorage.setItem('creditApplications', JSON.stringify(applications));
+
+    // Show success message
+    alert('Ваша заявка на кредит успешно отправлена!\n\nНомер заявки: ' + application.id + '\n\nМы свяжемся с вами в течение 5 минут');
+
+    // Reset form
+    document.querySelector('input[placeholder="Ваше имя"]').value = '';
+    document.querySelector('input[placeholder="Ваша фамилия"]').value = '';
+    document.querySelector('input[placeholder="123456789012"]').value = '';
+    document.querySelector('input[placeholder="+7 (---) ---"]').value = '';
+    document.querySelector('input[placeholder="500 000 ₸"]').value = '';
+    document.getElementById('consent').checked = false;
+
+    // Log application
+    console.log('Credit Application Submitted:', application);
+}
+
+// Add submit button event listener
+document.addEventListener('DOMContentLoaded', function() {
+    setActiveNavLink();
+    updateAuthUI();
+    
+    document.documentElement.style.opacity = '1';
+    document.documentElement.style.transition = 'opacity 0.3s ease';
+
+    // Replace submit button with actual function
+    const submitBtn = document.querySelector('.submit-btn');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', submitCreditApplication);
+    }
+
+    // Help button event
+    const helpBtn = document.querySelector('.help-btn');
+    if (helpBtn) {
+        helpBtn.addEventListener('click', function() {
+            alert('Контакт нашего менеджера: +7 (000) 000-0000\nEmail: support@nextgear.kz');
+        });
+    }
+
+    // Close modal when clicking outside
+    const modal = document.getElementById('carSelectionModal');
+    if (modal) {
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeCarSelectionModal();
+            }
+        });
+    }
+});
+
+// Handle browser back/forward
+window.addEventListener('pageshow', function() {
+    setActiveNavLink();
+    updateAuthUI();
+    document.documentElement.style.opacity = '1';
+});
+</script>
+
+</body>
+</html>
